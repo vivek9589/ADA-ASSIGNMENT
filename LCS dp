@@ -1,0 +1,51 @@
+#include<string.h>
+#include<stdio.h>
+int LCS( char *A, char *B, int x, int y )
+{
+    int L[x+1][y+1];
+    int i, j; 
+    for(i =0; i<=x; i++){
+        for(j=0; j<=y; j++){
+            if( i==0|| j==0)
+                 L[i][j] = 0;
+            else if(A[i-1] == B[j-1]){
+                L[i][j] = L[i-1][j-1] + 1;
+            }
+            else{
+                L[i][j] = maximum(L[i-1][j], L[i][j-1]);
+            }
+        }
+    }
+    return L[x][y];
+}
+int maximum(int a, int b)
+{
+    return (a > b)? a : b;
+} 
+int main()
+{
+char A[] = "XY";
+char B[] = "XPYQ";
+int x = strlen(A);
+int y = strlen(B);
+printf("The Length of Longest Common Subsequence is %d", LCS( A, B, x, y ) );
+return 0;
+}
+
+Time Complexity: 
+O(m * n) which is much better than the worst-case time complexity of Naive Recursive implementation. 
+
+Auxiliary Space: 
+O(m * n) because the algorithm uses an array of size (m+1)*(n+1) to store the length of the common substrings.
+
+Naive Approach for LCS:
+
+Time Complexity: O(n * 2n)
+
+Let us count the total subsequences with lengths 1, 2, . . . , n-1, n.
+From theory of permutation and combination we know number of combinations with 1 element is nC1. Number of combinations with 2 elements are nC2 and so on. 
+So a string of length n has nC1 + nC2 + . . . nCn = 2n-1 different possible subsequences.
+Each subsequence takes O(n) time to compare.
+
+
+Auxiliary Space: O(n) As we can reuse the same string.

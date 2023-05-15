@@ -1,0 +1,20 @@
+Algorithm Complexity
+Time Complexity: O(N * M* max(M,N))
+
+As we are storing the values in a 3-dimensional functional, we will be making at most N*M*max(N,M) calls to the function and each call will take O(1) time. So, the time complexity is O(N*M*(max(N,M))
+
+Space Complexity: O(N*M*max(N,M)) 
+
+For storing the answer of each state, we have created a table of size ‘N*M*max(N,M)’,  so the space complexity is O(N*M*max(N,M)).
+
+
+Brute force:
+
+Algorithm Complexity:
+Time Complexity: O(N * M * max(N, M))
+
+We have created two nested “for loops”. The first and second “for loop” are run to consider all possible indices in the first and second, respectively. Then a for loop is created for checking the length of the longest common substring. So, the time complexity is O(N * M * max(N, M)) where ‘N’ and ‘M’ are the lengths of the first and second strings, respectively.
+
+Space Complexity: O(1) 
+
+As we are using constant space, therefore the overall space complexity will be O(1).

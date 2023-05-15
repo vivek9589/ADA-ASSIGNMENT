@@ -1,0 +1,65 @@
+//A C++ program to implement LIS problem using Dynamic Programming  
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/* lis() returns the length of the longest
+
+increasing subsequence in arr[] of size N */
+
+int lis(int arr[], int N)
+
+{
+
+int lis[N];
+
+lis[0] = 1;
+
+/* Compute optimized LIS values in
+
+bottom up manner */
+
+for (int i = 1; i < N; i++) {
+
+lis[i] = 1;
+
+for (int j = 0; j < i; j++)
+
+if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+
+lis[i] = lis[j] + 1;
+
+}
+
+// Return maximum value in lis[]
+
+return *max_element(lis, lis + N);
+
+}
+
+/* Driver program to test above function */
+
+int main()
+
+{
+
+int arr[] = { 10, 15, 13, 9, 21, 22, 35, 29, 64 };
+
+int N = sizeof(arr) / sizeof(arr[0]);
+
+printf("Length of longest increasing sub-sequence is %d\n", lis(arr, N));
+
+return 0;
+
+}
+
+Time Complexity: O(N2) As a nested loop is used.
+Auxiliary Space: O(N) Use of any array to store LIS values at each index.
+
+Note: The time complexity of the above Dynamic Programming (DP) solution is O(n^2) and there is an O(N* logN) solution for the LIS problem. We have not discussed the O(N log N) solution here. 
+
+brute-force approach:-
+
+Time Complexity : O(2N), where N is the size of nums. At each index, we have choice to either take or not take the element and we explore both ways. So, we 2 * 2 * 2...N times = O(2^N)
+Space Complexity : O(N), max recursive stack depth.
